@@ -1,7 +1,7 @@
 package com.pmz.bg.word.generator.service.impl;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,14 +20,17 @@ public class WordGeneratorServiceImpl implements WordGeneratorService {
 
 
 	@Override
-	public List<String> generateListOfWords() throws FileNotFoundException, IOException {
-		Scanner scanner = new Scanner(new ClassPathResource("static/files/bgwords.txt").getFile());
-		List<String> words = new ArrayList<String>();
-		while (scanner.hasNext()){
+	public List<String> generateListOfWords() throws IOException{
+
+		String filePath = "static/files/bgwords.txt"; 
+        ClassPathResource classPathResource = new ClassPathResource(filePath);
+        InputStream inputStream = classPathResource.getInputStream(); 
+        Scanner scanner = new Scanner(inputStream);
+        List<String> words = new ArrayList<String>();
+        while (scanner.hasNext()){
 			words.add(scanner.next());
 		}
 		scanner.close();
-		
 		return words;
 	}
 

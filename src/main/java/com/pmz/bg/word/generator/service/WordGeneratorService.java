@@ -1,6 +1,5 @@
 package com.pmz.bg.word.generator.service;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -10,5 +9,5 @@ import java.util.List;
  */
 public interface WordGeneratorService {
 	
-	public List<String> generateListOfWords() throws FileNotFoundException, IOException;
+	public List<String> generateListOfWords() throws IOException;
 }
